@@ -15,6 +15,13 @@
       "validation_type": "kana"
     },
     {
+      "type": "email",
+      "name": "email",
+      "label": "貴社名（カナ）",
+      "required": true,
+      "validation_type": "email"
+    },
+    {
       "type": "text",
       "name": "tname",
       "label": "担当者名",
@@ -36,6 +43,20 @@
       "message": ":nameの形式が違います。"
     }
   ],
+  "contact_page_name":"contact.php",
   "comfirm_page_name":"comfirm.php",
-  "complete_page_name":"complete.php"
+  "complete_page_name":"complete.php",
+  "mail":
+    {
+      "title":"メールタイトル",
+      "host":"smtp.gmail.com",
+      "port":"587",
+      "user_name":"y.furukawa@sai.co.jp",
+      "password":"happy964127",
+      "from":"y.furukawa@sai.co.jp",
+      "from_name":"古川",
+      "admin":"yukika-yuta@docomo.ne.jp"
+
+    }
+
 }

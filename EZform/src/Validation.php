@@ -56,7 +56,7 @@ class Validation
   }
   private function setErrorMessage($setting, $validation_type = "required")
   {
-    $this->errors[$setting['name']] = str_replace(':name', $setting['label'], $this->error_message_list[$validation_type]);
+    $this->errors[$setting['name']] = str_replace(':name', $setting['label'], $this->error_message_list[$validation_type])['message'];
   }
 
   public function h($var)
@@ -105,4 +105,6 @@ class Validation
     }
     return true;
   }
+
+  
 }
