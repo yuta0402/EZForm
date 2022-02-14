@@ -23,6 +23,13 @@
     },
     {
       "type": "text",
+      "name": "zipcode",
+      "label": "郵便番号",
+      "required": true,
+      "validation_type": "zipcode"
+    },
+    {
+      "type": "text",
       "name": "tname",
       "label": "担当者名",
       "required": true,
@@ -41,6 +48,14 @@
     {
       "type": "kana",
       "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "tel",
+      "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "zipcode",
+      "message": ":nameの形式が違います。"
     }
   ],
   "contact_page_name":"contact.php",
@@ -56,7 +71,6 @@
       "from":"y.furukawa@sai.co.jp",
       "from_name":"古川",
       "admin":"yukika-yuta@docomo.ne.jp"
-
     }
 
 }
