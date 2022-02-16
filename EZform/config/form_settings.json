@@ -11,13 +11,13 @@
       "type": "text",
       "name": "cnamekana",
       "label": "貴社名（カナ）",
-      "required": true,
+      "required": false,
       "validation_type": "kana"
     },
     {
       "type": "email",
       "name": "email",
-      "label": "貴社名（カナ）",
+      "label": "メールアドレス",
       "required": true,
       "validation_type": "email"
     },
@@ -25,14 +25,14 @@
       "type": "text",
       "name": "zipcode",
       "label": "郵便番号",
-      "required": true,
+      "required": false,
       "validation_type": "zipcode"
     },
     {
       "type": "text",
       "name": "tname",
       "label": "担当者名",
-      "required": true,
+      "required": false,
       "validation_type": null
     }
   ],
@@ -58,11 +58,12 @@
       "message": ":nameの形式が違います。"
     }
   ],
-  "contact_page_name":"contact.php",
-  "comfirm_page_name":"comfirm.php",
-  "complete_page_name":"complete.php",
+  "contact_page_path":"contact.php",
+  "confirm_page_path":"confirm.php",
+  "complete_page_path":"complete.php",
   "mail":
     {
+      "email_form_name":"email",
       "title":"メールタイトル",
       "host":"smtp.gmail.com",
       "port":"587",

@@ -47,7 +47,7 @@ class Mailer extends PHPMailer
       //HTML形式の本文（文字エンコーディングを変換）
       $this->Body  = $mail_body;
       //テキスト形式の本文（文字エンコーディングを変換）
-      $this->AltBody = $mail_body;
+      // $this->AltBody = $mail_body;
 
       $this->send();  //送信
     } catch (\Exception $e) {
