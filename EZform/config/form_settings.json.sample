@@ -1,11 +1,9 @@
 {
-  "form_list": [
+   "form_list": [
     {
       "type": "text",
       "name": "cname",
-      "label": "貴社名",
-      "required": true,
-      "validation_type": null
+      "label": "貴社名"
     },
     {
       "type": "text",
@@ -22,6 +20,14 @@
       "validation_type": "email"
     },
     {
+      "type": "email",
+      "name": "email_kakunin",
+      "label": "メールアドレス(確認)",
+      "required": true,
+      "validation_type": "email",
+      "same_as": "email"
+    },
+    {
       "type": "text",
       "name": "zipcode",
       "label": "郵便番号",
@@ -33,6 +39,14 @@
       "name": "tname",
       "label": "担当者名",
       "required": false,
+      "validation_type": null
+    },
+    {
+      "type": "checkbox",
+      "name": "pp",
+      "label": "利用規約",
+      "value": "同意する",
+      "required": true,
       "validation_type": null
     }
   ],
@@ -56,6 +70,10 @@
     {
       "type": "zipcode",
       "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "same_as",
+      "message": "入力した値が正しくありません。"
     }
   ],
   "contact_page_path":"contact.php",

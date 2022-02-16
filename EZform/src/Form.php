@@ -44,14 +44,29 @@ class Form
           continue;
         }
       }
-      $validation_type = $setting['validation_type'];
-      // 項目にバリデーションタイプが設定されていたら
-      if ($validation_type) {
+
+      if (isset($setting['validation_type'])) {
+        $validation_type = $setting['validation_type'];
         if (!$this->checkByValidationType($input_value ?? '', $validation_type)) {
           $this->setErrorMessage($setting, $validation_type);
         }
       }
+
+      if ((isset($setting['same_as']))) {
+        if (!$this->checkSame($input_value, $setting['same_as'], $inputs)) {
+          $this->setErrorMessage($setting, 'same_as');
+        }
+      }
     }
+  }
+  private function checkSame(string $value, string $same_name, array $inputs)
+  {
+    if (isset($inputs[$same_name])) {
+      if ($value === $inputs[$same_name]) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private function checkByValidationType(string $value, string $type, bool $allowEmpty = true)
@@ -159,7 +174,7 @@ class Form
       $mail_body = $ez->replaceBody($pattern, $body_base);
 
       $to_email = $ez->inputs[$ez->form_settings['mail']['email_form_name']];
-      if(!$to_email){
+      if (!$to_email) {
         echo '設定を確認してください';
         die;
       }

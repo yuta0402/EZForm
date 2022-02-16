@@ -44,6 +44,15 @@ $ez = EZForm\Form::EZBuildForm();
   </div>
 
   <div>
+    <?php $key  = 'email_kakunin'; ?>
+    <?php $ez->label($key) ?>
+    <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?php $ez->old($key) ?>">
+    <div class="error" <?= $ez->error($key) ? 'style=display:block;' : '' ?>>
+      <?= $ez->error($key) ?>
+    </div>
+  </div>
+
+  <div>
     <?php $key  = 'pp'; ?>
     <?php $ez->label($key) ?>
     <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?php $ez->old($key) ?>">
