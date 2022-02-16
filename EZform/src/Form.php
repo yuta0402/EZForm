@@ -37,8 +37,8 @@ class Form
   public function checkAll(array $inputs): void
   {
     foreach ($this->form_list as $key => $setting) {
-      $input_value = $inputs[$key] ?? null;
-      if ($setting['required']) {
+      $input_value = $inputs[$key] ?? '';
+      if (isset($setting['required']) && $setting['required'] === true) {
         if (!Validation::checkRequired($input_value)) {
           $this->setErrorMessage($setting, "required");
           continue;
@@ -195,6 +195,12 @@ class Form
   {
     if (isset($this->form_list[$key])) {
       $this->echoSafely($this->form_list[$key]['type']);
+    }
+  }
+  public function value(string $key)
+  {
+    if (isset($this->form_list[$key])) {
+      $this->echoSafely($this->form_list[$key]['value']);
     }
   }
 
