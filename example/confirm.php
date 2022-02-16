@@ -39,6 +39,14 @@ $ez = EZForm\Form::EZBuildConfirm();
             <?php $ez->old($key) ?>
         </td>
     </tr>
+    
+    <?php $key = 'pp'?> 
+    <tr>
+        <th><?php $ez->label($key)?></th>
+        <td>
+            <?php $ez->old($key) ?>
+        </td>
+    </tr>
 </table>
 <!-- 記述例 -->
 

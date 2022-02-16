@@ -15,7 +15,7 @@ class Mailer extends PHPMailer
   {
 
     try {
-      $this->isHTML(false);
+      $this->isHTML(true);
       $this->isSMTP();   // SMTP を使用
       $this->Host       = $this->settings['host'];  // SMTP サーバーを指定
       $this->SMTPAuth   = true;   // SMTP authentication を有効に
@@ -47,7 +47,7 @@ class Mailer extends PHPMailer
       //HTML形式の本文（文字エンコーディングを変換）
       $this->Body  = $mail_body;
       //テキスト形式の本文（文字エンコーディングを変換）
-      // $this->AltBody = $mail_body;
+      $this->AltBody = $mail_body;
 
       $this->send();  //送信
     } catch (\Exception $e) {

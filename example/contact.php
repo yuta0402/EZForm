@@ -55,7 +55,7 @@ $ez = EZForm\Form::EZBuildForm();
   <div>
     <?php $key  = 'pp'; ?>
     <?php $ez->label($key) ?>
-    <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?php $ez->old($key) ?>">
+    <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?php $ez->value($key) ?>" <?php echo $ez->inputs[$key] ? 'checked' : ''?>>
     <div class="error" <?= $ez->error($key) ? 'style=display:block;' : '' ?>>
       <?= $ez->error($key) ?>
     </div>

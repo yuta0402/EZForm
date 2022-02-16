@@ -1,5 +1,5 @@
 {
-   "form_list": [
+  "form_list": [
     {
       "type": "text",
       "name": "cname",
@@ -48,32 +48,6 @@
       "value": "同意する",
       "required": true,
       "validation_type": null
-    }
-  ],
-  "error_message_list": [
-    {
-      "type": "required",
-      "message": ":nameは必須項目です。"
-    },
-    {
-      "type": "email",
-      "message": ":nameの形式が違います。"
-    },
-    {
-      "type": "kana",
-      "message": ":nameの形式が違います。"
-    },
-    {
-      "type": "tel",
-      "message": ":nameの形式が違います。"
-    },
-    {
-      "type": "zipcode",
-      "message": ":nameの形式が違います。"
-    },
-    {
-      "type": "same_as",
-      "message": "入力した値が正しくありません。"
     }
   ],
   "contact_page_path":"contact.php",
