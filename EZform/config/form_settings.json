@@ -1,0 +1,77 @@
+{
+  "form_list": [
+    {
+      "type": "text",
+      "name": "cname",
+      "label": "貴社名",
+      "required": true,
+      "validation_type": null
+    },
+    {
+      "type": "text",
+      "name": "cnamekana",
+      "label": "貴社名（カナ）",
+      "required": false,
+      "validation_type": "kana"
+    },
+    {
+      "type": "email",
+      "name": "email",
+      "label": "メールアドレス",
+      "required": true,
+      "validation_type": "email"
+    },
+    {
+      "type": "text",
+      "name": "zipcode",
+      "label": "郵便番号",
+      "required": false,
+      "validation_type": "zipcode"
+    },
+    {
+      "type": "text",
+      "name": "tname",
+      "label": "担当者名",
+      "required": false,
+      "validation_type": null
+    }
+  ],
+  "error_message_list": [
+    {
+      "type": "required",
+      "message": ":nameは必須項目です。"
+    },
+    {
+      "type": "email",
+      "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "kana",
+      "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "tel",
+      "message": ":nameの形式が違います。"
+    },
+    {
+      "type": "zipcode",
+      "message": ":nameの形式が違います。"
+    }
+  ],
+  "contact_page_path":"contact.php",
+  "confirm_page_path":"confirm.php",
+  "complete_page_path":"complete.php",
+  "mail":
+    {
+      "email_form_name":"email",
+      "title":"メールタイトル",
+      "host":"smtp.gmail.com",
+      "port":"587",
+      "user_name":"y.furukawa@sai.co.jp",
+      "password":"happy964127",
+      "from":"y.furukawa@sai.co.jp",
+      "from_name":"古川",
+      "admin":"yukika-yuta@docomo.ne.jp"
+    }
+
+}
