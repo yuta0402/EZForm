@@ -156,7 +156,7 @@ class Form
     }
     return $ez;
   }
-  public static function EZBuildConfirm()
+  public static function EZBuildConfirm($pardot_url = null)
   {
     session_start();
     $ez = new self(json_decode(file_get_contents(__DIR__ . "/../config/form_settings.json"), true), $_SESSION['ez_form'] ?? null);
@@ -171,6 +171,25 @@ class Form
         unset($_SESSION['ez_form']);
         header('Location: ' . $ez->form_settings['contact_page_path'], true, 301);
         exit();
+      }
+      if($pardot_url){
+        $CURLERR = NULL;
+        $ch = curl_init($pardot_url);
+  
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($ez->inputs));    //データをセット
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);                    //受け取ったデータを変数に
+        $html = curl_exec($ch);
+        
+        if (curl_errno($ch)) {        //curlでエラー発生
+          $CURLERR .= 'curl_errno：' . curl_errno($ch) . "\n";
+          $CURLERR .= 'curl_error：' . curl_error($ch) . "\n";
+          $CURLERR .= '▼curl_getinfo' . "\n";
+          foreach (curl_getinfo($ch) as $key => $val) {
+            $CURLERR .= '■' . $key . '：' . $val . "\n";
+          }
+          echo nl2br($CURLERR);
+        }
+        curl_close($ch);
       }
 
       $body_base = nl2br(file_get_contents(__DIR__ . "/../config/mail_body.txt"));
