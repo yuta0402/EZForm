@@ -2,6 +2,8 @@
 // 必要
 require_once('../EZform/vendor/autoload.php');
 $ez = EZForm\Form::EZBuildConfirm();
+
+var_dump($ez);
 // 必要
 ?>
 
@@ -41,6 +43,13 @@ $ez = EZForm\Form::EZBuildConfirm();
     </tr>
     
     <?php $key = 'pp'?> 
+    <tr>
+        <th><?php $ez->label($key)?></th>
+        <td>
+            <?php $ez->old($key) ?>
+        </td>
+    </tr>
+    <?php $key = 'checkbox'?> 
     <tr>
         <th><?php $ez->label($key)?></th>
         <td>

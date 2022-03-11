@@ -52,17 +52,44 @@ $ez = EZForm\Form::EZBuildForm();
     </div>
   </div>
 
+
   <div>
     <?php $key  = 'pp'; ?>
     <?php $ez->label($key) ?>
-    <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?php $ez->value($key) ?>" <?php echo $ez->inputs[$key] ? 'checked' : ''?>>
+    <?php
+    $options = $ez->options($key);
+    ?>
+
+    <?php foreach ($options as $k => $label) { ?>
+
+      <label for="<?= $ez->name($key) . $k ?>"><?= $label ?></label>
+
+      <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?= $label ?>" <?php echo isset($ez->inputs[$key]) && in_array($label, $ez->inputs[$key]) ? 'checked' : '' ?>>
+    <?php } ?>
     <div class="error" <?= $ez->error($key) ? 'style=display:block;' : '' ?>>
       <?= $ez->error($key) ?>
     </div>
+
+  </div>
+
+  <div>
+    <?php $key  = 'checkbox'; ?>
+    <?php $ez->label($key) ?>
+    <?php
+    $options = $ez->options('checkbox');
+    ?>
+
+    <?php foreach ($options as $k => $label) { ?>
+
+      <label for="<?= $ez->name($key) . $k ?>"><?= $label ?></label>
+
+      <input type="<?php $ez->type($key) ?>" name="<?php $ez->name($key) ?>" value="<?= $label ?>" <?php echo isset($ez->inputs[$key]) && in_array($label, $ez->inputs[$key]) ? 'checked' : '' ?>>
+    <?php } ?>
+    <div class="error" <?= $ez->error($key) ? 'style=display:block;' : '' ?>>
+      <?= $ez->error($key) ?>
+    </div>
+
   </div>
   <input type="submit" value="送信">
 
 </form>
-
-<?php
-?>
