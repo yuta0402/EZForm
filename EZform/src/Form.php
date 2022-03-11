@@ -118,7 +118,13 @@ class Form
    */
   public function old(string $key, string $default = '')
   {
-    $value = (isset($this->inputs[$key]))  ? $this->inputs[$key] : $default;
+    // if(is_array($this->inputs[$key])){
+    //   $value = implode('/',$this->inputs[$key]);
+
+    // }else{
+
+      $value = (isset($this->inputs[$key]))  ? $this->inputs[$key] : $default;
+    // }
     return $this->echoSafely($value);
   }
 
@@ -143,7 +149,7 @@ class Form
       header('Pragma:');
       session_start();
       $token = bin2hex(random_bytes(32));
-      $_SESSION['ez_form'] = $ez->inputs;
+      $_SESSION['ez_form'] = $ez->setImplodeVal($ez->inputs);
       $_SESSION['ez_form']['token'] = $token;
       header('Location: ' . $ez->form_settings['confirm_page_path'], true, 301);
       exit();
@@ -187,6 +193,16 @@ class Form
     return $ez;
   }
 
+  public function setImplodeVal($inputs)
+  {
+    foreach($inputs as $k => $v)
+    {
+      if(is_array($v)){
+        $inputs[$k] = implode( '/',$inputs[$k]);
+      }
+    }
+    return $inputs;
+  }
   public function error($key)
   {
     if (isset($this->errors[$key])) {
@@ -197,7 +213,12 @@ class Form
   public function name(string $key)
   {
     if (isset($this->form_list[$key])) {
-      $this->echoSafely($this->form_list[$key]['name']);
+      if($this->form_list[$key]['type'] == 'checkbox'){
+
+        $this->echoSafely($this->form_list[$key]['name'].'[]');
+      }else{
+        $this->echoSafely($this->form_list[$key]['name']);
+      }
     }
   }
   public function label(string $key)
@@ -223,5 +244,12 @@ class Form
   {
     $token = $this->inputs['token'];
     echo "<input type='hidden' name='token' value='{$token}'>";
+  }
+
+  public function options(string $key):array
+  {
+    $res = [];
+    $res = $this->form_list[$key]['options'];
+    return $res;
   }
 }

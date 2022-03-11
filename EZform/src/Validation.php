@@ -22,9 +22,13 @@ class Validation
     }
   }
 
-  public static function checkRequired(string $var): bool
+  public static function checkRequired($var): bool
   {
-    return ($var !== '' && isset($var)) ? true : false;
+    if(is_array($var)){
+      return(!empty($var)) ? true : false;
+    }else{
+      return ($var !== '' && isset($var)) ? true : false;
+    }
   }
 
   public static  function checkEmail(string $mail)
