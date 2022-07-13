@@ -131,13 +131,13 @@ class Form
   public function replaceBody($pattern, $base)
   {
     return preg_replace_callback($pattern, function ($matches) {
-      return $this->inputs[$matches[1]] ?? '';
+      return nl2br($this->inputs[$matches[1]]) ?? '';
     }, $base);
   }
 
-  public static function EZBuildForm()
+  public static function EZBuildForm($setting_path  ="/../config/form_settings.json")
   {
-    $ez = new self(json_decode(file_get_contents(__DIR__ . "/../config/form_settings.json"), true), $_POST);
+    $ez = new self(json_decode(file_get_contents(__DIR__ . $setting_path), true), $_POST);
 
     if ($ez->inputs) {
       $ez->checkAll($ez->inputs);
@@ -156,10 +156,10 @@ class Form
     }
     return $ez;
   }
-  public static function EZBuildConfirm($pardot_url = null)
+  public static function EZBuildConfirm($pardot_url = null,$setting_path  ="/../config/form_settings.json",$mail_body_path = '/../config/mail_body.txt')
   {
     session_start();
-    $ez = new self(json_decode(file_get_contents(__DIR__ . "/../config/form_settings.json"), true), $_SESSION['ez_form'] ?? null);
+    $ez = new self(json_decode(file_get_contents(__DIR__ . $setting_path), true), $_SESSION['ez_form'] ?? null);
 
     // 入力がなかった場合
     if (empty($ez->inputs)) {
@@ -192,7 +192,7 @@ class Form
         curl_close($ch);
       }
 
-      $body_base = nl2br(file_get_contents(__DIR__ . "/../config/mail_body.txt"));
+      $body_base = nl2br(file_get_contents(__DIR__ . $mail_body_path));
       $ez_mailer = new Mailer($ez->form_settings['mail']);
 
       $pattern = "/{{(.+?)}}/";
